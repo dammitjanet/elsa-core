@@ -110,6 +110,8 @@ Scheduled workflows typically create trigger or bookmark payloads that the sched
 
 The scheduler integrates with tenancy by reacting to tenant activation/deletion events.
 
+On startup, [CreateSchedulesStartupTask](../../src/modules/Elsa.Scheduling/StartupTasks/CreateSchedulesStartupTask.cs) uses [SchedulingBookmarkReconciler](../../src/modules/Elsa.Scheduling/Services/SchedulingBookmarkReconciler.cs) to classify `Delay`, `Timer`, `Cron`, and `StartAt` bookmarks against the workflow instance store. Bookmarks whose instance is missing or no longer `Running` are treated as orphans and purged before schedules are rebuilt. This prevents ghost schedules from accumulating after interrupted process restarts or incomplete cleanup.
+
 ## Resilience Module
 
 Start in [src/modules/Elsa.Resilience](../../src/modules/Elsa.Resilience) and [Elsa.Resilience.Core](../../src/modules/Elsa.Resilience.Core).

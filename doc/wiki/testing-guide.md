@@ -36,6 +36,24 @@ Shared helpers:
 | Dashboard API endpoints or aggregation logic | `Elsa.Dashboard.Api.UnitTests`. |
 | AI/Weaver abstractions or host behavior | `Elsa.AI.Abstractions.UnitTests`, `Elsa.AI.Host.UnitTests`, or `Elsa.AI.IntegrationTests`. |
 | Persistence vNext store or physicalization logic | `Elsa.Persistence.VNext.UnitTests`. |
+| Store contract correctness across providers | Conformance test project for the relevant module. |
+
+## Conformance Tests
+
+Conformance test suites verify that all persistence providers for a given module honor the same behavioral contract: query filters, sort order, cursor pagination, tenant isolation, fault injection, and edge cases. They run against each registered provider in one pass.
+
+Conformance projects under `test/integration/`:
+
+- [Elsa.Workflows.Persistence.ConformanceTests](../../test/integration/Elsa.Workflows.Persistence.ConformanceTests) — workflow instance, definition, and runtime store contracts.
+- [Elsa.Alterations.Persistence.ConformanceTests](../../test/integration/Elsa.Alterations.Persistence.ConformanceTests) — alteration plan and job store contracts.
+- [Elsa.Diagnostics.StructuredLogs.Persistence.ConformanceTests](../../test/integration/Elsa.Diagnostics.StructuredLogs.Persistence.ConformanceTests) — structured log store contracts (InMemory and SQLite).
+- [Elsa.Labels.Persistence.ConformanceTests](../../test/integration/Elsa.Labels.Persistence.ConformanceTests) — label store contracts.
+
+Conformance projects under `test/unit/`:
+
+- [Elsa.UserTasks.Persistence.ConformanceTests](../../test/unit/Elsa.UserTasks.Persistence.ConformanceTests) — user task repository contracts including fault injection, invitation outbox, and guest session queries.
+
+Add a conformance test suite when introducing a new persistence module that will have multiple provider packages. Add a case to an existing suite when fixing a query-behavior bug to prevent regression across providers.
 
 ## Useful Commands
 

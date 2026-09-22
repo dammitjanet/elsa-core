@@ -42,6 +42,7 @@ Current ADRs:
 | [0025](../adr/0025-two-axis-authorization-model.md) | Two-axis authorization model with open resources and open verbs. |
 | [0026](../adr/0026-identity-neutral-user-task-participants.md) | Use identity-neutral participant references for User Tasks. |
 | [0027](../adr/0027-project-user-tasks-from-committed-bookmarks.md) | Project User Tasks from committed workflow bookmarks. |
+| [2026-09-15](../adr/2026-09-15-correlated-workflow-activation.md) | Refuse duplicate Running instances through activation strategies. |
 
 > **Note on naming:** ADRs 0001–0027 use sequential integer prefixes. New ADRs added after 2026-08-25 use a `YYYY-MM-DD-` date prefix instead (see [2026-08-25-date-prefixed-adr-identifiers](../adr/2026-08-25-date-prefixed-adr-identifiers.md)) to avoid sequential numbering collisions on parallel branches.
 
@@ -87,7 +88,8 @@ For runtime behavior, read in this order:
 2. [specs/002-graceful-shutdown/plan.md](../../specs/002-graceful-shutdown/plan.md)
 3. [ADR 0003](../adr/0003-direct-bookmark-management-in-workflowexecutioncontext.md)
 4. [ADR 0004](../adr/0004-activity-execution-snapshots.md)
-5. affected runtime service and tests
+5. [ADR 2026-09-15](../adr/2026-09-15-correlated-workflow-activation.md) — activation strategies and `CorrelationId` uniqueness
+6. affected runtime service and tests
 
 ## Reading Order For Flowchart Work
 
