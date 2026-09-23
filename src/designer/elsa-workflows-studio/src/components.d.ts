@@ -145,6 +145,7 @@ export namespace Components {
         "propertyModel": ActivityDefinitionProperty;
     }
     interface ElsaModalDialog {
+        "dialogWidth": string;
         "hide": (animate?: boolean) => Promise<void>;
         "show": (animate?: boolean) => Promise<void>;
     }
@@ -225,6 +226,7 @@ export namespace Components {
     }
     interface ElsaSingleLineProperty {
         "activityModel": ActivityModel;
+        "isEncypted"?: boolean;
         "propertyDescriptor": ActivityPropertyDescriptor;
         "propertyModel": ActivityDefinitionProperty;
     }
@@ -1064,6 +1066,7 @@ declare namespace LocalJSX {
         "propertyModel"?: ActivityDefinitionProperty;
     }
     interface ElsaModalDialog {
+        "dialogWidth"?: string;
         "onHidden"?: (event: CustomEvent<any>) => void;
         "onShown"?: (event: CustomEvent<any>) => void;
     }
@@ -1148,6 +1151,7 @@ declare namespace LocalJSX {
     }
     interface ElsaSingleLineProperty {
         "activityModel"?: ActivityModel;
+        "isEncypted"?: boolean;
         "propertyDescriptor"?: ActivityPropertyDescriptor;
         "propertyModel"?: ActivityDefinitionProperty;
     }
